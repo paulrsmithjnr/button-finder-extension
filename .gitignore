@@ -1,0 +1,69 @@
+# Angular build output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node dependencies
+/node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Chrome Extension packaging
+*.crx
+*.pem
+*.zip
+
+# Angular environment files
+.env
+.env.*
+!.env.example
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# IDE - JetBrains (WebStorm, IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+out/
+
+# IDE - Eclipse
+.classpath
+.project
+.settings/
+
+# System Files
+.DS_Store
+Thumbs.db
+.directory
+*.swp
+*~
+
+# Compiled output
+*.js.map
+*.css.map
+
+# Testing
+/coverage
+/.nyc_output
+/cypress/videos/
+/cypress/screenshots/
+
+# Misc
+/.sass-cache
+/connect.lock
+/libpeerconnection.log
+testem.log
+/typings
+
+# Angular cache
+.angular/cache 
