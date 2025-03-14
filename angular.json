@@ -30,7 +30,14 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "aot": true,
+            "allowedCommonJsDependencies": ["chrome"],
+            "vendorChunk": false,
+            "extractLicenses": false,
+            "buildOptimizer": true,
+            "optimization": true,
+            "namedChunks": false
           },
           "configurations": {
             "production": {
@@ -46,7 +53,11 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "sourceMap": false,
+              "stylePreprocessorOptions": {
+                "includePaths": ["src/styles"]
+              }
             },
             "development": {
               "buildOptimizer": false,
@@ -95,5 +106,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "bdafb139-b164-4190-9511-7a013bd7ad73"
   }
 } 

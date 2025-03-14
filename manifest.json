@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "description": "Finds buttons on web pages and shows tooltips over them",
   "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
   "action": {
-    "default_popup": "dist/button-finder-extension/index.html",
+    "default_popup": "index.html",
     "default_icon": {
       "16": "assets/icon16.png",
       "48": "assets/icon48.png",
@@ -15,11 +16,11 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["dist/button-finder-extension/content-script.js"]
+      "js": ["content-script.js"]
     }
   ],
   "background": {
-    "service_worker": "dist/button-finder-extension/background.js",
+    "service_worker": "background.js",
     "type": "module"
   }
 } 

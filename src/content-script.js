@@ -4,8 +4,18 @@ let tooltips = [];
 // Listen for messages from the popup
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === 'findButtons') {
-    removeExistingTooltips();
-    findAndHighlightButtons();
+    try {
+      removeExistingTooltips();
+      const count = findAndHighlightButtons();
+      // Send success response with count
+      sendResponse({ success: true, count: count });
+    } catch (error) {
+      console.error('Error finding buttons:', error);
+      // Send error response
+      sendResponse({ success: false, error: error.message });
+    }
+    // Return true to indicate we will send a response asynchronously
+    return true;
   }
 });
 
@@ -35,13 +45,17 @@ function findAndHighlightButtons() {
   const uniqueButtons = [...new Set(buttonElements)];
 
   // Add tooltip for each button
+  let visibleButtonCount = 0;
   uniqueButtons.forEach(button => {
     const rect = button.getBoundingClientRect();
     if (rect.width > 0 && rect.height > 0) { // Only visible buttons
       const tooltip = createTooltip(button);
       tooltips.push(tooltip);
+      visibleButtonCount++;
     }
   });
+  
+  return visibleButtonCount;
 }
 
 // Function to create tooltip for a button

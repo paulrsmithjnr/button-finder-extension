@@ -5,11 +5,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production --aot",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "postbuild": "npm run copy-files",
-    "copy-files": "cp src/content-script.js dist/button-finder-extension/ && cp src/background.js dist/button-finder-extension/"
+    "postbuild": "npm run copy-files && npm run fix-files",
+    "copy-files": "cp src/content-script.js dist/button-finder-extension/ && cp src/background.js dist/button-finder-extension/ && cp manifest.json dist/button-finder-extension/ && mkdir -p dist/button-finder-extension/assets && touch dist/button-finder-extension/assets/icon16.png dist/button-finder-extension/assets/icon48.png dist/button-finder-extension/assets/icon128.png && cp src/extension-index.html dist/button-finder-extension/index.html",
+    "fix-files": "cd dist/button-finder-extension && cp runtime.*.js runtime.js && cp polyfills.*.js polyfills.js && cp main.*.js main.js && cp styles.*.css styles.css"
   },
   "private": true,
   "dependencies": {
